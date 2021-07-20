@@ -1,0 +1,21 @@
+<%- include('partials/header') %>
+
+<div style="width: 30%; margin: 25px auto;">
+	<div>
+		<h1 style="text-align: center; margin-down: 15px;">Sign Up!</h1>	
+	</div>
+	
+<form action="/register" method="post">
+	<div class="form-group">
+        <input class="form-control" type="text" name="username" placeholder="username" required>
+	</div>
+	<div class="form-group">
+        <input class="form-control" type="password" name="password" placeholder="password" required>
+	</div>
+	<div class="form-group">
+        <input class="form-control" type="password" name="admincode"  placeholder="Enter code only if you are admin...">
+	</div>
+    <button class="btn btn-lg btn-primary btn-sm btn-block">Sign Up</button>
+</form>
+</div>
+<%- include('partials/footer') %>

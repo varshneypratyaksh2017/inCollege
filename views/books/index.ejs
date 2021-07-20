@@ -1,0 +1,51 @@
+<%- include('../partials/header') %>
+
+  <% if(currentUser && currentUser.isAdmin) {%>
+			<div class="container" style="text-align:center">
+				<h2>
+					You are logged in as Admin !!
+				</h2>
+			</div>
+	<% } %>
+
+ <div class="container">
+     <header class="jumbotron">
+         <div class="container">
+             <h1>Welcome To inCollege!</h1>
+             <p>View our hand-picked books from the whole College</p>
+             <p>
+                <a class="btn btn-primary btn-large" href="/books/new">Add New Book</a>
+             </p>
+         </div>
+		 <div style="display:flex; flex-wrap: wrap;">
+          <div class="col-md-12 ">
+			  <p>
+            	<form action="/books" method="GET" class="form-inline">
+            		<div class="form-group">
+            			<input class="form-control" type="text" name="search" placeholder="Book search by Name..." >
+            			<input type="submit" value="Search" class="btn btn-primary">
+            		</div>
+			    </form>
+			  </p>
+         </div>
+     </header>
+     
+     <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+
+        <% books.forEach(function(book){ %>
+            <div class="col-md-3 col-sm-12">
+                <div class="thumbnail">
+                   <img style="max-height:320px" src="<%= book.image %>">
+                   <div class="caption">
+                       <h4><%= book.name %></h4>
+                   </div>
+                   <p>
+                       <a href="/books/<%= book._id %>" class="btn btn-primary">More Info</a>
+                   </p>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+
+
+<%- include('../partials/footer') %>

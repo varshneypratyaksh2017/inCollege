@@ -1,0 +1,67 @@
+<%- include('../partials/header') %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <div class="thumbnail">
+                <img class="img-responsive" style="max-height:700px; max-weight:300px" src="<%= book.image %>">
+                <div class="caption-full">
+                    <h4 class="pull-right">Rs. <%= book.price %></h4>
+					<h4><a><%=book.name%></a></h4>
+                    <p>
+                        <em>Submitted By <%= book.author.username %></em>
+                    </p>
+                    <% if(currentUser && book.author.id.equals(currentUser._id)){ %>
+                        <a class="btn btn-xs btn-warning" href="/books/<%= book._id %>/edit">Edit</a>
+                        <form id="delete-form" action="/books/<%= book._id %>?_method=DELETE" method="POST">
+                            <button class="btn btn-xs btn-danger">Delete</button>
+                        </form>
+                    <% }%>
+                </div>
+            </div>
+            <div class="well">
+                <div class="text-right">
+                    <a class="btn btn-success" href="/books/<%= book._id %>/comments/new">Add New Comment</a>
+                </div>
+                <hr>
+                <% book.comments.forEach(function(comment){ %>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <strong><%= comment.author.username %></strong>
+                            <span class="pull-right">10 days ago</span>
+                            <p>
+                                <%= comment.text %> 
+                            </p>
+                        <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+                            <a class="btn btn-xs btn-warning" 
+                               href="/books/<%=book._id %>/comments/<%=comment._id %>/edit">Edit</a>
+                            <form id="delete-form" action="/books/<%=book._id %>/comments/<%=comment._id %>?_method=DELETE" method="POST">
+                                <input type="submit" class="btn btn-xs btn-danger" value="Delete">
+                            </form>
+                        <% } %>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+		<div class="col-md-3">
+            <p class="lead" style="text-align:center">inCollege</p>
+            <div class="list-group">
+                <li class="list-group-item"><strong> Year : </strong> <%= book.year %> </li>
+                <li class="list-group-item"><strong> Subject : </strong> <%= book.subject %></li>
+                <li class="list-group-item"><strong> Price : </strong> Rs <%= book.price %></li>
+				<li class="list-group-item"><strong> Bought In : </strong> <%= book.bought %></li>
+				<li class="list-group-item"><strong> Description : </strong> <%= book.description %></li>
+				<li class="list-group-item"><strong> Contact Number: </strong> <%= book.contact %></li>
+            </div>
+			<div style="text-align:center">
+				<p>
+					<a href="/books%>" class="btn btn-primary">Go Back</a>
+				</p>
+		</div>
+        </div>
+		
+    </div>
+</div>
+
+
+<%- include('../partials/footer') %>

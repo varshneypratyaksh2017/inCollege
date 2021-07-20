@@ -1,0 +1,27 @@
+.thumbnail img {
+    width: 100%;
+}
+
+
+.img_cl{
+	max-height: 200px;
+	min-height: 200px;
+	max-width: fit-content ;
+}
+
+.img{ 
+       max-width:100%; 
+       height:auto; 
+} 
+
+.thumbnail {
+    padding: 0;
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+}
+
+#delete-form {
+    display: inline;
+}
