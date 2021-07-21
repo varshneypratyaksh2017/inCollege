@@ -10,6 +10,22 @@ var express     = require("express"),
     Comment     = require("./models/comment"),
     User        = require("./models/user"),
     seedDB      = require("./seeds")
+
+//new-entry
+
+var session = require('express-session')
+var MemoryStore = require('memorystore')(session)
+
+app.use(session({
+    cookie: { maxAge: 86400000 },
+    store: new MemoryStore({
+      checkPeriod: 86400000 // prune expired entries every 24h
+    }),
+    resave: false,
+    secret: 'keyboard cat'
+}))
+
+//upto here
     
 //requiring routes
 var commentRoutes    = require("./routes/comments"),
