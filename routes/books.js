@@ -7,19 +7,6 @@ var middleware = require("../middleware");
 //INDEX - show all books
 router.get("/", function(req, res){
     var noMatch = null;
-    // if(req.query.search) {
-    //     const regex = new RegExp(escapeRegex(req.query.search), 'gi');
-    //     // Get all books from DB
-    //     Book.find({name: regex}, function(err, allBooks){
-    //        if(err){
-    //            console.log(err);
-    //        } else {
-    //           if(allBooks.length < 1) {
-    //               noMatch = "No books match that query, please try again.";
-    //           }
-    //           res.render("books/index",{books:allBooks, noMatch: noMatch});
-    //        }
-    //     });
 	if(req.query.search) {
         const regex = new RegExp(escapeRegex(req.query.search), 'gi');
         // Get all books from DB

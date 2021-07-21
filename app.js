@@ -17,7 +17,8 @@ var commentRoutes    = require("./routes/comments"),
     indexRoutes      = require("./routes/index")
     
 
-mongoose.connect('mongodb://localhost:27017/inCollege', { useNewUrlParser: true, useUnifiedTopology: true});
+//mongoose.connect('mongodb://localhost:27017/inCollege', { useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb+srv://varshneynishu:pratyaksh@cluster0.ino51.mongodb.net/abc?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true});
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
